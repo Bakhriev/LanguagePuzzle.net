@@ -29,6 +29,7 @@ const path = {
     js: distPath + 'assets/js/',
     images: distPath + 'assets/img/',
     fonts: distPath + 'assets/fonts/',
+    audios: distPath,
   },
   src: {
     html: srcPath + '*.html',
@@ -38,6 +39,7 @@ const path = {
       srcPath +
       'assets/img/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json}',
     fonts: srcPath + 'assets/fonts/**/*.{eot,woff,woff2,ttf,svg}',
+    audios: srcPath + 'assets/audios',
   },
   watch: {
     html: srcPath + '**/*.html',
@@ -47,6 +49,7 @@ const path = {
       srcPath +
       'assets/img/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json}',
     fonts: srcPath + 'assets/fonts/**/*.{eot,woff,woff2,ttf,svg}',
+    audios: srcPath + 'assets/audios/.mp3',
   },
   clean: './' + distPath,
 }
@@ -64,6 +67,13 @@ function html() {
     .pipe(plumber())
     .pipe(fileinclude())
     .pipe(dest(path.build.html))
+    .pipe(browserSync.reload({ stream: true }))
+}
+
+function audios() {
+  return src(path.src.audios, { base: srcPath })
+    .pipe(plumber())
+    .pipe(dest(path.build.audios))
     .pipe(browserSync.reload({ stream: true }))
 }
 
@@ -166,9 +176,10 @@ function watchFiles() {
   gulp.watch([path.watch.js], js)
   // gulp.watch([path.watch.images], images)
   gulp.watch([path.watch.fonts], fonts)
+  gulp.watch([path.watch.audios], audios)
 }
 
-const build = series(clean, parallel(html, css, js, webpImages, fonts))
+const build = series(clean, parallel(html, css, js, audios, webpImages, fonts))
 const watch = parallel(build, watchFiles, serve)
 
 exports.html = html
@@ -177,6 +188,7 @@ exports.js = js
 // exports.images = images
 exports.webpImages = webpImages
 exports.fonts = fonts
+exports.audios = audios
 exports.clean = clean
 exports.build = build
 exports.watch = watch
