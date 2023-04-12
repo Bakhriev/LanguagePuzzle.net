@@ -15,6 +15,9 @@ function initSoundOnHover() {
     item.addEventListener('mouseover', () => {
       sounds[index].play()
     })
+    item.addEventListener('click', () => {
+      sounds[index].play()
+    })
   })
 }
 

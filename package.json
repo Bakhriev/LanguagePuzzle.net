@@ -1,6 +1,5 @@
 {
   "name": "gulp-site",
-  "type": "module",
   "version": "1.0.0",
   "description": "new gulp website",
   "author": "Coder Folder",

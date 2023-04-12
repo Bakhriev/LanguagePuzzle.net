@@ -5,7 +5,7 @@ body {
   font-family: serif;
   font-weight: 400;
   font-size: 16px;
-  background: #131212;
+  background: #0e0f10;
 }
 
 // Wrapper
@@ -30,4 +30,12 @@ body {
 
 audio {
   display: none;
+}
+
+button {
+  outline-offset: 3px;
+}
+
+button:focus-visible:active {
+  outline-offset: 1px;
 }
