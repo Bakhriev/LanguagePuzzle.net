@@ -9,6 +9,7 @@ const audio3 = audi[2]
 const audio4 = audi[3]
 
 const sounds = [audio1, audio2, audio3, audio4]
+
 function initSoundOnHover() {
   answerButtons.forEach((item, index) => {
     item.addEventListener('mouseover', () => {
@@ -39,19 +40,27 @@ function onCLickVolumeIcon() {
 volumeBtn.addEventListener('click', () => {
   volumeBtn.classList.toggle('volume-on')
   onCLickVolumeIcon()
+  volumeBtn.addEventListener('focus', () => {
+    audio4.play()
+  })
 })
 
-//
+// Arrow Select functional
 const quiz1 = answerButtons[0]
 const quiz2 = answerButtons[1]
 const quiz3 = answerButtons[2]
 const quiz4 = answerButtons[3]
 
-window.addEventListener('keydown', (e) => {
+const quizwrapper = document.querySelector('.quiz-wrapper')
+
+quizwrapper.addEventListener('keydown', (e) => {
   let focusIndex = e.target.dataset.focus
 
   switch (e.key) {
     case 'ArrowLeft':
+      if (focusIndex === '0') {
+        volumeBtn.focus()
+      }
       if (focusIndex === '1') {
         quiz1.focus()
       }
@@ -74,6 +83,9 @@ window.addEventListener('keydown', (e) => {
       }
       if (focusIndex === '2') {
         quiz4.focus()
+      }
+      if (e.target === volumeBtn) {
+        quiz1.focus()
       }
       break
     case 'ArrowUp':
@@ -105,3 +117,11 @@ window.addEventListener('keydown', (e) => {
       break
   }
 })
+
+// Arrow Select but not first tab click
+function ifNotTabClicked() {
+  volumeBtn.focus()
+  window.removeEventListener('keydown', ifNotTabClicked)
+}
+
+window.addEventListener('keydown', ifNotTabClicked)
