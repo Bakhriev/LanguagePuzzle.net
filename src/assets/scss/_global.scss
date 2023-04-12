@@ -2,10 +2,20 @@
 
 // Body
 body {
+  margin: 0;
   font-family: serif;
   font-weight: 400;
   font-size: 16px;
-  background: #0e0f10;
+  background: -webkit-linear-gradient(
+    to right,
+    #535455,
+    #6a6b6c
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #575858,
+    #525353
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 // Wrapper
