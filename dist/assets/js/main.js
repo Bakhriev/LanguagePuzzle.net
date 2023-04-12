@@ -1,12 +1,15 @@
 const answerButtons = document.querySelectorAll('.answer-button')
 const volumeBtn = document.querySelector('.volume-icon')
 
-const audio1 = new Audio('../audios/click.mp3.mp3')
-const audio2 = new Audio('../audios/click.mp3.mp3')
-const audio3 = new Audio('../audios/click.mp3.mp3')
-const audio4 = new Audio('../audios/click.mp3.mp3')
-const sounds = [audio1, audio2, audio3, audio4]
+const audi = document.querySelector('.sounds').children
 
+const audio1 = audi[0]
+const audio2 = audi[1]
+const audio3 = audi[2]
+const audio4 = audi[3]
+
+const sounds = [audio1, audio2, audio3, audio4]
+console.log(sounds)
 function initSoundOnHover() {
   answerButtons.forEach((item, index) => {
     item.addEventListener('mouseover', () => {
@@ -28,9 +31,7 @@ function onCLickVolumeIcon() {
   initSoundOnHover()
 }
 
-// Listeners
-window.addEventListener('load', onCLickVolumeIcon)
-
 volumeBtn.addEventListener('click', () => {
   volumeBtn.classList.toggle('volume-on')
+  onCLickVolumeIcon()
 })
