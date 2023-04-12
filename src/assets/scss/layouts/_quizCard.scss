@@ -1,10 +1,22 @@
 @import '../vars';
 
 .quiz-wrapper {
-  max-width: 600px;
-  min-height: 600px;
-  border: 1px solid black;
-  margin: auto;
+  position: relative;
+  max-width: 500px;
+  min-height: 400px;
+  border: 1px solid rgb(214, 204, 204);
+  width: 100%;
+  padding: 0 15px;
+  padding-top: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+}
+.wrapper {
+  padding: 0 15px;
+}
+.main {
+  display: grid;
+  place-items: center;
 }
 
 .quiz-buttons {
@@ -15,13 +27,13 @@
 
 .answer-button {
   position: relative;
-
-  max-width: 300px;
+  background-color: #504e4e;
   width: 100%;
   height: 60px;
   overflow: hidden;
 
   border-radius: 5px;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 
   &:active {
     transform: scale(0.97);
@@ -30,6 +42,7 @@
   &:hover .smoke::before,
   &:focus-visible .smoke::before {
     border-color: #fff;
+    display: block;
   }
 }
 .answer {
@@ -37,7 +50,7 @@
   font-size: 22px;
   color: #fff;
   top: 50%;
-  left: 10%;
+  left: 5%;
   transform: translate(0%, -50%);
 }
 .smoke {
@@ -57,6 +70,7 @@
     border-radius: 5px;
     box-shadow: 0 0 50px #fff, inset 0 0 50px #fff;
     transition: border-color 150ms ease;
+    display: none;
   }
 }
 
@@ -64,4 +78,26 @@
 
 .wave-svg {
   display: none;
+}
+
+.volume-icon {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
+  svg {
+    &:last-child {
+      display: none;
+    }
+  }
+  &.volume-on {
+    svg {
+      &:last-child {
+        display: block;
+      }
+      &:first-child {
+        display: none;
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 const answerButtons = document.querySelectorAll('.answer-button')
-const volumeBtn = document.querySelector('.volume-button')
+const volumeBtn = document.querySelector('.volume-icon')
 
 const audio1 = new Audio('../audios/click.mp3.mp3')
 const audio2 = new Audio('../audios/click.mp3.mp3')
@@ -16,7 +16,7 @@ function initSoundOnHover() {
 }
 
 function onCLickVolumeIcon() {
-  if (volumeBtn.classList.contains('active')) {
+  if (volumeBtn.classList.contains('volume-on')) {
     sounds.forEach((sound) => {
       sound.muted = false
     })
@@ -32,5 +32,5 @@ function onCLickVolumeIcon() {
 window.addEventListener('load', onCLickVolumeIcon)
 
 volumeBtn.addEventListener('click', () => {
-  volumeBtn.classList.toggle('active')
+  volumeBtn.classList.toggle('volume-on')
 })
