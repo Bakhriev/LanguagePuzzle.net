@@ -29,7 +29,7 @@ const path = {
     js: distPath + 'assets/js/',
     images: distPath + 'assets/img/',
     fonts: distPath + 'assets/fonts/',
-    audios: distPath,
+    audios: distPath + 'assets/audios',
   },
   src: {
     html: srcPath + '*.html',
@@ -39,7 +39,7 @@ const path = {
       srcPath +
       'assets/img/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json}',
     fonts: srcPath + 'assets/fonts/**/*.{eot,woff,woff2,ttf,svg}',
-    audios: srcPath + 'assets/audios',
+    audios: srcPath + 'assets/audios/**/*.{mp3}',
   },
   watch: {
     html: srcPath + '**/*.html',
@@ -49,7 +49,7 @@ const path = {
       srcPath +
       'assets/img/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json}',
     fonts: srcPath + 'assets/fonts/**/*.{eot,woff,woff2,ttf,svg}',
-    audios: srcPath + 'assets/audios/.mp3',
+    audios: srcPath + 'assets/audios/**/*.{mp3}',
   },
   clean: './' + distPath,
 }
